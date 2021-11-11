@@ -1,0 +1,34 @@
+<div class="container">
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header.column}}</th>
+        <th>Vacation</th>
+        <th>Work</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="employees.length > 0">
+      <tr *ngFor="let employee of employees">
+        <td *ngFor="let header of headers">{{employee[header?.field]}}</td>
+        <td>
+          <div>
+            <input class="ui input" type="number" min="0" (change)="vacationDaysChange($event)">
+          </div>
+          <br>
+          <div>
+            <button class="ui primary button" (click)="takeVacation(employee['id'],vacationDays)">Take Vacation</button>
+          </div>
+        </td>
+        <td>
+          <div>
+            <input class="ui input" type="number" min="0" (change)="workDaysChange($event)">
+          </div>
+          <br>
+          <div>
+            <button class="ui primary button" (click)="work(employee['id'],workDays)">Work</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
